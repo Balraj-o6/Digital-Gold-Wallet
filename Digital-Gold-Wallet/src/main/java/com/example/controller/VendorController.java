@@ -14,12 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/vendors")
 public class VendorController {
-    private final IVendorService service;
-
-    @Autowired
-    public VendorController(IVendorService service) {
-        this.service = service;
-    }
+	
+	@Autowired
+    private IVendorService service;
 
     @GetMapping("/public")
     public ResponseEntity<List<PublicVendorDTO>>  getAllPublicVendors(){

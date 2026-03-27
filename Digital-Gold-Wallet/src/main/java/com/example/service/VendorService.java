@@ -16,12 +16,10 @@ import java.util.Optional;
 @Service
 public class VendorService implements IVendorService {
 
-    private final IVendorRepository repo;
+	@Autowired
+    private IVendorRepository repo;
 
-    @Autowired
-    public VendorService(IVendorRepository repo) {
-        this.repo = repo;
-    }
+    
 
     @Override
     public List<PublicVendorDTO> getAllPublicVendors() {
