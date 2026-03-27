@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a854399-9326-4826-adea-dd8d8da804ca" name="Changes" comment="Address class made" />
+    <list default="true" id="8a854399-9326-4826-adea-dd8d8da804ca" name="Changes" comment="Merge pull request #4 from Balraj-o6/anant-new&#10;&#10;Vendor environment files created">
+      <changelist_data name="AnantSingh555" email="139130113+anantsingh555@users.noreply.github.com" automatic="false" />
+      <change afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dto/PaymentDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dto/VirtualGoldHoldingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IAddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IAddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IPaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IPaymentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IPhysicalGoldTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IPhysicalGoldTransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/ITransactionHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/ITransactionHistoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IVendorBranchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IVendorBranchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IVirtualGoldHoldingsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/dao/IVirtualGoldHoldingsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/PhysicalGoldTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/PhysicalGoldTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/TransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/VendorBranch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/VendorBranch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/VirtualGoldHoldings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/entity/VirtualGoldHoldings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/target/classes/META-INF/maven/com.example/Digital-Gold-Wallet/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/target/classes/com/example/demo/DigitalGoldWalletApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/target/test-classes/com/example/demo/DigitalGoldWalletApplicationTests.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,31 +48,31 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AnantSingh555"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AnantSingh555&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Balraj-o6/Digital-Gold-Wallet-.git",
-    "accountId": "35c8d8ab-60e6-451a-9763-a419ad75b5d4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Balraj-o6/Digital-Gold-Wallet-.git&quot;,
+    &quot;accountId&quot;: &quot;35c8d8ab-60e6-451a-9763-a419ad75b5d4&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "Balraj-o6",
-    "repository": "Digital-Gold-Wallet"
+    &quot;owner&quot;: &quot;Balraj-o6&quot;,
+    &quot;repository&quot;: &quot;Digital-Gold-Wallet&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3BQxstxq9cieQ60abj4dUixs3fA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -62,6 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "anant-new",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -93,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Address class made" />
-    <option name="LAST_COMMIT_MESSAGE" value="Address class made" />
+    <MESSAGE value="Merge pull request #4 from Balraj-o6/anant-new&#10;&#10;Vendor environment files created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #4 from Balraj-o6/anant-new&#10;&#10;Vendor environment files created" />
   </component>
 </project>

@@ -3,19 +3,13 @@ package com.example.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "vendor_branches")
 public class VendorBranch {
 
@@ -31,8 +25,10 @@ public class VendorBranch {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @Column(nullable=false, precision=18, scale=2)
     private BigDecimal quantity;
+
+    @Column(name="created_At", insertable = false, updatable=false)
     private LocalDateTime createdAt;
 
-    // Getters and Setters
 }

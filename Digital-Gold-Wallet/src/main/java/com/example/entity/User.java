@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,8 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "users")
 public class User {
 
@@ -33,15 +33,5 @@ public class User {
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
-    public User(){}
-
-    public User(String email, String name, Address address, BigDecimal balance, LocalDateTime createdAt) {
-        this.email = email;
-        this.name = name;
-        this.address = address;
-        this.balance = balance;
-        this.createdAt = createdAt;
-    }
 
 }

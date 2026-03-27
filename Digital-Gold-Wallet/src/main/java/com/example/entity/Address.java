@@ -1,12 +1,12 @@
 package com.example.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name="addresses")
 public class Address {
     @Id
@@ -24,11 +24,4 @@ public class Address {
     @Column(name="country", length=100)
     private String country;
 
-    public Address(String street, String city, String state, String postalCode, String country) {
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.country = country;
-    }
 }

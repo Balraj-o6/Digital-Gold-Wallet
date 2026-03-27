@@ -3,34 +3,30 @@ package com.example.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "virtual_gold_holdings")
 public class VirtualGoldHoldings {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer holdingId;
 
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "branch_id")
-    private VendorBranch branch;
+    private VendorBranch vendorBranch;
 
+    @Column(nullable=false, precision = 18, scale=2)
     private BigDecimal quantity;
+    @Column(name="created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 	
 	

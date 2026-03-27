@@ -7,32 +7,26 @@ import com.example.enums.PaymentMethod;
 import com.example.enums.PaymentStatus;
 import com.example.enums.TransactionType;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "payments")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="payment_id")
     private Integer paymentId;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(nullable = false, precision = 18, scale=2)
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
@@ -44,7 +38,7 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
+    @Column(name="created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Getters and Setters
 }

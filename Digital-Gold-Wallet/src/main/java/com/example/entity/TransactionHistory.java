@@ -6,46 +6,43 @@ import java.time.LocalDateTime;
 import com.example.enums.TransactionStatus;
 import com.example.enums.TransactionType;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "transaction_history")
 public class TransactionHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="transaction_id")
     private Integer transactionId;
 
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "branch_id")
-    private VendorBranch branch;
+    private VendorBranch vendorBranch;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="transaction_type")
     private TransactionType transactionType;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="transaction_status")
     private TransactionStatus transactionStatus;
 
+    @Column(nullable = false, precision = 10, scale=2)
     private BigDecimal quantity;
+    @Column(nullable=false, precision = 18, scale=2)
     private BigDecimal amount;
 
+    @Column(name="created_at", nullable=false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Getters and Setters
 }
