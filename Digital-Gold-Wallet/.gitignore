@@ -1,17 +1,2 @@
 src/main/resources/application.properties
-# Maven build folder
 target/
-
-# Logs
-*.log
-*.class
-
-# IDE files
-.idea/
-*.iml
-.classpath
-.project
-
-# OS files
-.DS_Store
-Thumbs.db
