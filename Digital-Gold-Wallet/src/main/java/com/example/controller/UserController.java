@@ -41,4 +41,5 @@ public class UserController {
                 transactionHistoryService.getTransactionsByStatus(status);
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
+    //This api is fetching Transaction based on status
 }
