@@ -1,1 +1,6 @@
 src/main/resources/application.properties
+*.log
+*.class
+*.tmp
+
+./idea

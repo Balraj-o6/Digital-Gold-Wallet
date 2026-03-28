@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class TransactionHistoryDTO {
+
     private Integer transactionId;
     private String userName;
     private String vendorName;
