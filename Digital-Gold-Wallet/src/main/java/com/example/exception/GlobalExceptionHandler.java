@@ -24,6 +24,13 @@ public class GlobalExceptionHandler {
     public ErrorDTO handleVendorNotFound(VendorNotFoundException e, HttpServletRequest request){
         return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
     }
+    
+    @ResponseBody
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(value= HttpStatus.NOT_FOUND)
+    public ErrorDTO handleUserNotFound(UserNotFoundException e, HttpServletRequest request){
+        return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
+    }
 
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)

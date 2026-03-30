@@ -29,7 +29,6 @@ public class TransactionHistory {
     @JoinColumn(name = "branch_id")
     private VendorBranch vendorBranch;
 
-    @Enumerated(EnumType.STRING)
     @Column(name="transaction_type")
     private TransactionType transactionType;
 
