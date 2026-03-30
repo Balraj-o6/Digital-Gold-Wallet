@@ -3,7 +3,7 @@
 package com.example.controller;
 
 import com.example.dto.TransactionHistoryDTO;
-package com.example.controller;
+
 
 import com.example.dto.PhysicalGoldTransactionDTO;
 import com.example.dto.TransactionHistoryDTO;
@@ -23,6 +23,9 @@ public class TransactionController {
     @Autowired                           // Spring automatically gives us the service
     private ITransactionHistoryService transactionHistoryService;
 
+    @Autowired
+    private IPhysicalGoldTransactionService physicalGoldTransactionService;
+
     // URL: GET /api/transactions/branch/3
     //      (the {branchId} part comes from the URL — so 3 becomes the branchId)
     @GetMapping("/branch/{branchId}")
@@ -34,13 +37,8 @@ public class TransactionController {
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
-}
-@RestController
-@RequestMapping("/api/transactions")
-public class TransactionController {
 
-    @Autowired
-    private IPhysicalGoldTransactionService physicalGoldTransactionService;
+
 
     @GetMapping("/physical/branch/{branchId}")
     public ResponseEntity<List<PhysicalGoldTransactionDTO>> getPhysicalTransactionsByBranchId(

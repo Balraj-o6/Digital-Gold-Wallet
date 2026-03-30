@@ -7,6 +7,7 @@
     <list default="true" id="8a854399-9326-4826-adea-dd8d8da804ca" name="Changes" comment="Merge pull request #4 from Balraj-o6/anant-new&#10;&#10;Vendor environment files created">
       <changelist_data name="AnantSingh555" email="139130113+anantsingh555@users.noreply.github.com" automatic="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digital-Gold-Wallet/src/main/java/com/example/controller/TransactionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +68,21 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DigitalGoldWalletApplication.executor": "Run",
-    "git-widget-placeholder": "sankalpCode",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="DigitalGoldWalletApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="Digital-Gold-Wallet" />
