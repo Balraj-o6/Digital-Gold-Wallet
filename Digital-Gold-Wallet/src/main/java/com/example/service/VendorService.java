@@ -38,24 +38,13 @@ public class VendorService implements IVendorService {
     }
 
     @Override
-    public AdminVendorDTO getVendorById(Integer id) throws VendorNotFoundException {
-        Optional<Vendor> op=repo.findById(id);
+    public AdminVendorDTO getVendorByName(String name) throws VendorNotFoundException {
+        Optional<Vendor> op=repo.findByVendorName(name);
         if(op.isPresent()){
             return VendorMapper.convertEntityToAdminDto(op.get());
         }
         else throw new VendorNotFoundException("Vendor Not Found !!!");
     }
 
-    @Override
-    public AdminVendorDTO saveVendor(AdminVendorDTO avDto) {
-        Vendor savedVendor=repo.saveAndFlush(VendorMapper.convertAdminDtoToEntity(avDto));
-        return VendorMapper.convertEntityToAdminDto(savedVendor);
-    }
 
-    @Override
-    public String deleteVendor(Integer id) {
-        getVendorById(id);
-        repo.deleteById(id);
-        return "Vendor Deleted Successfully !!!";
-    }
 }

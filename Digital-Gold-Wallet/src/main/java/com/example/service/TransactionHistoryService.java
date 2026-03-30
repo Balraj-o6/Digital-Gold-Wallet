@@ -105,4 +105,5 @@ public class TransactionHistoryService implements ITransactionHistoryService {
 
         return resultList;
     }
+	
 }

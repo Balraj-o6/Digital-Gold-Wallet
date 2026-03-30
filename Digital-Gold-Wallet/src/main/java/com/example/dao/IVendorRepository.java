@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface IVendorRepository extends JpaRepository <Vendor, Integer> {
-//    Optional<AdminVendorDTO> findByVendorName (String vendorName);
+    Optional<Vendor> findByVendorName (String vendorName);
 //    Optional<AdminVendorDTO> findByContactEmail(String contactEmail);
 }

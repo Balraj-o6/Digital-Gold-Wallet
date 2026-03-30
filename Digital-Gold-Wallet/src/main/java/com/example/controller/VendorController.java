@@ -30,22 +30,12 @@ public class VendorController {
         return new ResponseEntity<>(adminVendors, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AdminVendorDTO> getVendorById(@PathVariable Integer id){
-        AdminVendorDTO avDto=service.getVendorById(id);
+    @GetMapping("/{name}")
+    public ResponseEntity<AdminVendorDTO> getVendorByName(@PathVariable String name){
+        AdminVendorDTO avDto=service.getVendorByName(name);
         return new ResponseEntity<>(avDto, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<AdminVendorDTO> createVendor(@Valid @RequestBody AdminVendorDTO avDto){
-        AdminVendorDTO savedVendor=service.saveVendor(avDto);
-        return new ResponseEntity<>(savedVendor, HttpStatus.CREATED);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteVendor(@PathVariable Integer id){
-        String output=service.deleteVendor(id);
-        return new ResponseEntity<>(output, HttpStatus.OK);
-    }
 
 }
