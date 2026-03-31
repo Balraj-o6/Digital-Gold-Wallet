@@ -49,4 +49,14 @@ public class TransactionController {
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
+    
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<TransactionHistoryDTO>> getTransactionHistoryByUserId(
+            @PathVariable Integer userId) {
+
+        List<TransactionHistoryDTO> transactions =
+                transactionHistoryService.getTransactionHistoryByUserId(userId);
+
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
 }
