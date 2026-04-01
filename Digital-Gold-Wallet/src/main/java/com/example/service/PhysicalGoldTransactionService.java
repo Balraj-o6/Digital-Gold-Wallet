@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dao.IPhysicalGoldTransactionRepository;
 import com.example.dto.PhysicalGoldTransactionDTO;
 import com.example.entity.PhysicalGoldTransaction;
+import com.example.exception.TransactionNotFoundException;
 import com.example.mapper.PhysicalGoldTransactionMapper;
 import org.springframework.stereotype.Service;
 

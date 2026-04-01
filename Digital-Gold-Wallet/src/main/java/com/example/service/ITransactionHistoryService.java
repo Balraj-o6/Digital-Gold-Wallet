@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dto.TransactionHistoryDTO;
+import com.example.exception.TransactionNotFoundException;
 
 import java.util.List;
 
