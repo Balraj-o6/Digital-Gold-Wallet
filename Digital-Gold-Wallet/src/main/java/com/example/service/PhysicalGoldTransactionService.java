@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dao.IPhysicalGoldTransactionRepository;
 import com.example.dto.PhysicalGoldTransactionDTO;
 import com.example.entity.PhysicalGoldTransaction;
+import com.example.exception.TransactionNotFoundException;
 import com.example.mapper.PhysicalGoldTransactionMapper;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,10 @@ public class PhysicalGoldTransactionService implements IPhysicalGoldTransactionS
 
 		List<PhysicalGoldTransaction> transactions = physicalGoldTransactionRepository
 				.findByVendorBranch_BranchId(branchId);
+
+		if (transactions.isEmpty()) {
+			throw new TransactionNotFoundException("No physical Transaction history found for branch Id: " + branchId);
+		}
 
 		List<PhysicalGoldTransactionDTO> resultList = new ArrayList<>();
 
