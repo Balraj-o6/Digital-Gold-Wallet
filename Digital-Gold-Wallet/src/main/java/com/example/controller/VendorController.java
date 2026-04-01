@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -19,22 +20,17 @@ public class VendorController {
 		this.service = vendorService;
 	}
 
-	@GetMapping("/public")
-	public ResponseEntity<List<PublicVendorDTO>> getAllPublicVendors() {
-		List<PublicVendorDTO> publicVendors = service.getAllPublicVendors();
-		return new ResponseEntity<>(publicVendors, HttpStatus.OK);
-	}
-
-	@GetMapping("/admin")
-	public ResponseEntity<List<AdminVendorDTO>> getAllAdminVendors() {
-		List<AdminVendorDTO> adminVendors = service.getAllAdminVendors();
-		return new ResponseEntity<>(adminVendors, HttpStatus.OK);
-	}
 
 	@GetMapping("/{name}")
 	public ResponseEntity<AdminVendorDTO> getVendorByName(@PathVariable String name) {
 		AdminVendorDTO avDto = service.getVendorByName(name);
 		return new ResponseEntity<>(avDto, HttpStatus.OK);
+	}
+
+	@GetMapping("/{quantity}")
+	public ResponseEntity<List<AdminVendorDTO>> getVendorByTotalGoldQuantityMoreThan(@PathVariable BigDecimal quantity){
+		List<AdminVendorDTO> lAdminDTO=service.getVendorByTotalGoldQuantityGreaterThan(quantity);
+		return new ResponseEntity<>(lAdminDTO, HttpStatus.OK);
 	}
 
 }

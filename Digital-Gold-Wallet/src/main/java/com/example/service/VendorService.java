@@ -8,6 +8,7 @@ import com.example.exception.VendorNotFoundException;
 import com.example.mapper.VendorMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,21 +22,6 @@ public class VendorService implements IVendorService {
 		this.repo = repo;
 	}
 
-	@Override
-	public List<PublicVendorDTO> getAllPublicVendors() {
-		List<Vendor> lVend = repo.findAll();
-		List<PublicVendorDTO> lPubVend = new ArrayList<>();
-		lVend.forEach((e) -> lPubVend.add(VendorMapper.convertEntityToPublicDto(e)));
-		return lPubVend;
-	}
-
-	@Override
-	public List<AdminVendorDTO> getAllAdminVendors() {
-		List<Vendor> lVend = repo.findAll();
-		List<AdminVendorDTO> lAdmVend = new ArrayList<>();
-		lVend.forEach((e) -> lAdmVend.add(VendorMapper.convertEntityToAdminDto(e)));
-		return lAdmVend;
-	}
 
 	@Override
 	public AdminVendorDTO getVendorByName(String name) throws VendorNotFoundException {
@@ -44,6 +30,14 @@ public class VendorService implements IVendorService {
 			return VendorMapper.convertEntityToAdminDto(op.get());
 		} else
 			throw new VendorNotFoundException("Vendor Not Found !!!");
+	}
+
+	@Override
+	public List<AdminVendorDTO> getVendorByTotalGoldQuantityGreaterThan(BigDecimal quantity) {
+		List<Vendor> lVendDTO=repo.getVendorByTotalGoldQuantityGreaterThanEqual(quantity);
+		List<AdminVendorDTO> lAdminVendDTO=new ArrayList<>();
+		lVendDTO.forEach((e)->lAdminVendDTO.add(VendorMapper.convertEntityToAdminDto(e)));
+		return lAdminVendDTO;
 	}
 
 }
