@@ -33,13 +33,6 @@ public class GlobalExceptionHandler {
 	}
 
 	@ResponseBody
-	@ExceptionHandler(TransactionNotFoundException.class)
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	public ErrorDTO handleTransactionNotFound(TransactionNotFoundException e, HttpServletRequest request) {
-		return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
-	}
-
-	@ResponseBody
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public Map<String, ErrorDTO> handleValidationException(MethodArgumentNotValidException e,
