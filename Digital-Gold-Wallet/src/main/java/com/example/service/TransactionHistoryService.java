@@ -8,7 +8,6 @@ import com.example.enums.TransactionType;
 import com.example.exception.UserNotFoundException;
 import com.example.mapper.TransactionHistoryMapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,8 +17,11 @@ import java.util.stream.Collectors;
 @Service
 public class TransactionHistoryService implements ITransactionHistoryService {
 
-	@Autowired
 	private ITransactionHistoryRepository transactionHistoryRepository;
+
+	public TransactionHistoryService(ITransactionHistoryRepository historyRepo) {
+		this.transactionHistoryRepository = historyRepo;
+	}
 
 	@Override
 	public List<TransactionHistoryDTO> getTransactionsByStatus(String status) {
@@ -119,15 +121,11 @@ public class TransactionHistoryService implements ITransactionHistoryService {
 
 	}
 
-
 	@Override
 	public List<TransactionHistoryDTO> getTransactionsByType(String type) {
 		TransactionType transactionType = TransactionType.fromValue(type);
-		List<TransactionHistory> transactions =
-				transactionHistoryRepository.findByTransactionType(transactionType);
-		return transactions.stream()
-				.map(TransactionHistoryMapper::convertEntityToDTO)
-				.collect(Collectors.toList());
+		List<TransactionHistory> transactions = transactionHistoryRepository.findByTransactionType(transactionType);
+		return transactions.stream().map(TransactionHistoryMapper::convertEntityToDTO).collect(Collectors.toList());
 	}
 
 }

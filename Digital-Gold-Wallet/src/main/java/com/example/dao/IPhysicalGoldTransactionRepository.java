@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface IPhysicalGoldTransactionRepository extends JpaRepository<PhysicalGoldTransaction, Integer> {
 
-    List<PhysicalGoldTransaction> findByUser_UserId(Integer userId);
+	List<PhysicalGoldTransaction> findByUser_UserId(Integer userId);
 
-    List<PhysicalGoldTransaction> findByVendorBranch_BranchId(Integer branchId);
+	List<PhysicalGoldTransaction> findByVendorBranch_BranchId(Integer branchId);
 
-    List<PhysicalGoldTransaction> findByDeliveryAddress_City(String city);
+	List<PhysicalGoldTransaction> findByDeliveryAddress_City(String city);
 }

@@ -15,7 +15,6 @@ import com.example.mapper.AddressMapper;
 import com.example.mapper.PhysicalGoldTransactionMapper;
 import com.example.mapper.UserMapper;
 import com.example.mapper.VirtualGoldHoldingMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -25,63 +24,58 @@ import java.util.stream.Collectors;
 @Service
 public class UserService implements IUserService {
 
-    @Autowired
-    private IUserRepository userRepository;
+	private final IUserRepository userRepository;
+	private final IVirtualGoldHoldingsRepository virtualGoldHoldingsRepository;
+	private final IPhysicalGoldTransactionRepository physicalGoldTransactionRepository;
 
-    @Autowired
-    private IVirtualGoldHoldingsRepository virtualGoldHoldingsRepository;
+	public UserService(IUserRepository userRepo, IVirtualGoldHoldingsRepository virtualRepo,
+			IPhysicalGoldTransactionRepository physicalRepo) {
+		this.userRepository = userRepo;
+		this.virtualGoldHoldingsRepository = virtualRepo;
+		this.physicalGoldTransactionRepository = physicalRepo;
+	}
 
-    @Autowired
-    private IPhysicalGoldTransactionRepository physicalGoldTransactionRepository;
+	@Override
+	public UserDTO getUserByEmail(String email) {
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+		return UserMapper.convertEntityToDTO(user);
+	}
 
-   
+	@Override
+	public UserPortfolioDTO getUserPortfolio(Integer userId) {
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
 
-    @Override
-    public UserDTO getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
-        return UserMapper.convertEntityToDTO(user);
-    }
+		List<VirtualGoldHoldings> virtualList = virtualGoldHoldingsRepository.findByUser_UserId(userId);
 
-    @Override
-    public UserPortfolioDTO getUserPortfolio(Integer userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+		List<PhysicalGoldTransaction> physicalList = physicalGoldTransactionRepository.findByUser_UserId(userId);
 
-        List<VirtualGoldHoldings> virtualList =
-                virtualGoldHoldingsRepository.findByUser_UserId(userId);
+		List<VirtualGoldHoldingDTO> virtualDTOs = virtualList.stream()
+				.map(VirtualGoldHoldingMapper::convertEntityToObject).collect(Collectors.toList());
 
-        List<PhysicalGoldTransaction> physicalList =
-                physicalGoldTransactionRepository.findByUser_UserId(userId);
+		List<PhysicalGoldTransactionDTO> physicalDTOs = physicalList.stream()
+				.map(PhysicalGoldTransactionMapper::convertEntityToDTO).collect(Collectors.toList());
 
-        List<VirtualGoldHoldingDTO> virtualDTOs = virtualList.stream()
-                .map(VirtualGoldHoldingMapper::convertEntityToObject)
-                .collect(Collectors.toList());
+		BigDecimal totalVirtual = virtualList.stream().map(VirtualGoldHoldings::getQuantity).reduce(BigDecimal.ZERO,
+				BigDecimal::add);
 
-        List<PhysicalGoldTransactionDTO> physicalDTOs = physicalList.stream()
-                .map(PhysicalGoldTransactionMapper::convertEntityToDTO)
-                .collect(Collectors.toList());
+		BigDecimal totalPhysical = physicalList.stream().map(PhysicalGoldTransaction::getQuantity)
+				.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal totalVirtual = virtualList.stream()
-                .map(VirtualGoldHoldings::getQuantity)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+		UserPortfolioDTO portfolio = new UserPortfolioDTO();
+		portfolio.setUserId(user.getUserId());
+		portfolio.setUserName(user.getName());
+		portfolio.setUserEmail(user.getEmail());
+		portfolio.setBalance(user.getBalance());
+		portfolio.setAddress(AddressMapper.convertEntityToObject(user.getAddress()));
+		portfolio.setVirtualHoldings(virtualDTOs);
+		portfolio.setPhysicalTransactions(physicalDTOs);
+		portfolio.setTotalVirtualGold(totalVirtual);
+		portfolio.setTotalPhysicalGold(totalPhysical);
+		portfolio.setTotalGold(totalVirtual.add(totalPhysical));
 
-        BigDecimal totalPhysical = physicalList.stream()
-                .map(PhysicalGoldTransaction::getQuantity)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+		return portfolio;
+	}
 
-        UserPortfolioDTO portfolio = new UserPortfolioDTO();
-        portfolio.setUserId(user.getUserId());
-        portfolio.setUserName(user.getName());
-        portfolio.setUserEmail(user.getEmail());
-        portfolio.setBalance(user.getBalance());
-        portfolio.setAddress(AddressMapper.convertEntityToObject(user.getAddress()));
-        portfolio.setVirtualHoldings(virtualDTOs);
-        portfolio.setPhysicalTransactions(physicalDTOs);
-        portfolio.setTotalVirtualGold(totalVirtual);
-        portfolio.setTotalPhysicalGold(totalPhysical);
-        portfolio.setTotalGold(totalVirtual.add(totalPhysical));
-
-        return portfolio;
-    }
 }

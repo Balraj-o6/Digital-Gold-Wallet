@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IAddressRepository extends JpaRepository<Address, Integer> {
-    List<Address> findByCity(String city);
-    List<Address> findByState(String state);
+	List<Address> findByCity(String city);
+
+	List<Address> findByState(String state);
 }

@@ -12,11 +12,12 @@ import java.util.List;
 
 @Repository
 public interface ITransactionHistoryRepository extends JpaRepository<TransactionHistory, Integer> {
-    List<TransactionHistory> findByUser_UserIdOrderByCreatedAtDesc(Integer userId);
-    List<TransactionHistory> findByVendorBranch_BranchId(Integer branchId);
-    
-    List<TransactionHistory> findByTransactionType(TransactionType transactionType);
+	List<TransactionHistory> findByUser_UserIdOrderByCreatedAtDesc(Integer userId);
 
-    //added for get transaction by status
-    List<TransactionHistory> findByTransactionStatus(TransactionStatus transactionStatus);
+	List<TransactionHistory> findByVendorBranch_BranchId(Integer branchId);
+
+	List<TransactionHistory> findByTransactionType(TransactionType transactionType);
+
+	// added for get transaction by status
+	List<TransactionHistory> findByTransactionStatus(TransactionStatus transactionStatus);
 }

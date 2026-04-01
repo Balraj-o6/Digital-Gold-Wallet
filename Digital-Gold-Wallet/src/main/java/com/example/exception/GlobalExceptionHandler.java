@@ -18,37 +18,38 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ResponseBody
-    @ExceptionHandler(VendorNotFoundException.class)
-    @ResponseStatus(value= HttpStatus.NOT_FOUND)
-    public ErrorDTO handleVendorNotFound(VendorNotFoundException e, HttpServletRequest request){
-        return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
-    }
-    
-    @ResponseBody
-    @ExceptionHandler(UserNotFoundException.class)
-    @ResponseStatus(value= HttpStatus.NOT_FOUND)
-    public ErrorDTO handleUserNotFound(UserNotFoundException e, HttpServletRequest request){
-        return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
-    }
+	@ResponseBody
+	@ExceptionHandler(VendorNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public ErrorDTO handleVendorNotFound(VendorNotFoundException e, HttpServletRequest request) {
+		return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
+	}
 
-    @ResponseBody
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(value=HttpStatus.BAD_REQUEST)
-    public Map<String, ErrorDTO> handleValidationException(MethodArgumentNotValidException e, HttpServletRequest request){
-        List<ObjectError> errors=e.getBindingResult().getAllErrors();
-        Map<String, ErrorDTO> mp=new HashMap<>();
-        for(ObjectError err:errors){
-            String fieldName=((FieldError)err).getField();
-            mp.put(fieldName,new ErrorDTO(err.getDefaultMessage(), LocalDate.now(), request.getRequestURI()));
-        }
-        return mp;
-    }
+	@ResponseBody
+	@ExceptionHandler(UserNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public ErrorDTO handleUserNotFound(UserNotFoundException e, HttpServletRequest request) {
+		return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
+	}
 
-    @ResponseBody
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorDTO handleGenericException(Exception e, HttpServletRequest request){
-        return new ErrorDTO(e.getMessage(), LocalDate.now(),request.getRequestURI());
-    }
+	@ResponseBody
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public Map<String, ErrorDTO> handleValidationException(MethodArgumentNotValidException e,
+			HttpServletRequest request) {
+		List<ObjectError> errors = e.getBindingResult().getAllErrors();
+		Map<String, ErrorDTO> mp = new HashMap<>();
+		for (ObjectError err : errors) {
+			String fieldName = ((FieldError) err).getField();
+			mp.put(fieldName, new ErrorDTO(err.getDefaultMessage(), LocalDate.now(), request.getRequestURI()));
+		}
+		return mp;
+	}
+
+	@ResponseBody
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	public ErrorDTO handleGenericException(Exception e, HttpServletRequest request) {
+		return new ErrorDTO(e.getMessage(), LocalDate.now(), request.getRequestURI());
+	}
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface IVendorBranchRepository extends JpaRepository<VendorBranch, Integer> {
-    List<VendorBranch> findByVendor_VendorId(Integer vendorId);
-    List<VendorBranch> findByQuantityLessThan(BigDecimal threshold);
+	List<VendorBranch> findByVendor_VendorId(Integer vendorId);
+
+	List<VendorBranch> findByQuantityLessThan(BigDecimal threshold);
 }

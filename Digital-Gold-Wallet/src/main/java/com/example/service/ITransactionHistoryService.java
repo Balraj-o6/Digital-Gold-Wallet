@@ -4,16 +4,14 @@ import com.example.dto.TransactionHistoryDTO;
 
 import java.util.List;
 
+public interface ITransactionHistoryService {
 
-    public interface ITransactionHistoryService {
-    	
-    	
-        // Get all transactions filtered by status — "Success" or "Failed"
-        List<TransactionHistoryDTO> getTransactionsByStatus(String status);
-        List<TransactionHistoryDTO> getTransactionsByBranchId(Integer branchId);
-        
-        List<TransactionHistoryDTO> getTransactionHistoryByUserId(Integer userId);
+	// Get all transactions filtered by status — "Success" or "Failed"
+	List<TransactionHistoryDTO> getTransactionsByStatus(String status);
 
-        List<TransactionHistoryDTO> getTransactionsByType(String type);
-    }
+	List<TransactionHistoryDTO> getTransactionsByBranchId(Integer branchId);
 
+	List<TransactionHistoryDTO> getTransactionHistoryByUserId(Integer userId);
+
+	List<TransactionHistoryDTO> getTransactionsByType(String type);
+}

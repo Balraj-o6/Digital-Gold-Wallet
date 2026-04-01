@@ -1,70 +1,67 @@
-// Create: src/main/java/com/example/controller/TransactionController.java
-
 package com.example.controller;
 
 import com.example.dto.TransactionHistoryDTO;
 
-
 import com.example.dto.PhysicalGoldTransactionDTO;
-import com.example.dto.TransactionHistoryDTO;
 import com.example.service.IPhysicalGoldTransactionService;
 import com.example.service.ITransactionHistoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController                          // Tells Spring: this class handles HTTP requests
-@RequestMapping("/api/transactions")     // All URLs in this class start with /api/transactions
+@RestController
+@RequestMapping("/api/transactions")
 public class TransactionController {
 
-    @Autowired                           // Spring automatically gives us the service
-    private ITransactionHistoryService transactionHistoryService;
+	private final ITransactionHistoryService transactionHistoryService;
+	private final IPhysicalGoldTransactionService physicalGoldTransactionService;
 
-    @Autowired
-    private IPhysicalGoldTransactionService physicalGoldTransactionService;
+	public TransactionController(ITransactionHistoryService historyService,
+			IPhysicalGoldTransactionService physicalService) {
+		this.transactionHistoryService = historyService;
+		this.physicalGoldTransactionService = physicalService;
+	}
 
-    // URL: GET /api/transactions/branch/3
-    //      (the {branchId} part comes from the URL — so 3 becomes the branchId)
-    @GetMapping("/branch/{branchId}")
-    public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByBranchId(
-            @PathVariable Integer branchId) {   // @PathVariable reads {branchId} from the URL
+	@GetMapping("/branch/{branchId}")
+	public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByBranchId(@PathVariable Integer branchId) {
 
-        List<TransactionHistoryDTO> transactions =
-                transactionHistoryService.getTransactionsByBranchId(branchId);
+		List<TransactionHistoryDTO> transactions = transactionHistoryService.getTransactionsByBranchId(branchId);
 
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
 
+	@GetMapping("/physical/branch/{branchId}")
+	public ResponseEntity<List<PhysicalGoldTransactionDTO>> getPhysicalTransactionsByBranchId(
+			@PathVariable Integer branchId) {
 
+		List<PhysicalGoldTransactionDTO> transactions = physicalGoldTransactionService
+				.getPhysicalTransactionsByBranchId(branchId);
 
-    @GetMapping("/physical/branch/{branchId}")
-    public ResponseEntity<List<PhysicalGoldTransactionDTO>> getPhysicalTransactionsByBranchId(
-            @PathVariable Integer branchId) {
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
 
-        List<PhysicalGoldTransactionDTO> transactions =
-                physicalGoldTransactionService.getPhysicalTransactionsByBranchId(branchId);
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<List<TransactionHistoryDTO>> getTransactionHistoryByUserId(@PathVariable Integer userId) {
 
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
-    }
-    
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<TransactionHistoryDTO>> getTransactionHistoryByUserId(
-            @PathVariable Integer userId) {
+		List<TransactionHistoryDTO> transactions = transactionHistoryService.getTransactionHistoryByUserId(userId);
 
-        List<TransactionHistoryDTO> transactions =
-                transactionHistoryService.getTransactionHistoryByUserId(userId);
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
 
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
-    }
+	@GetMapping("/type")
+	public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByType(@RequestParam String type) {
+		List<TransactionHistoryDTO> transactions = transactionHistoryService.getTransactionsByType(type);
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
+	
+	@GetMapping("/status")
+	public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByStatus(@RequestParam String status) {
 
-    @GetMapping("/type")
-    public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByType(
-            @RequestParam String type) {
-        List<TransactionHistoryDTO> transactions =
-                transactionHistoryService.getTransactionsByType(type);
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
-    }
+		List<TransactionHistoryDTO> transactions = transactionHistoryService.getTransactionsByStatus(status);
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+
+	}
+
 }
