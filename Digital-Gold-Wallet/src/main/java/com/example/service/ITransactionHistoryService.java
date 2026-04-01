@@ -8,11 +8,11 @@ import java.util.List;
 public interface ITransactionHistoryService {
 
 	// Get all transactions filtered by status — "Success" or "Failed"
-	List<TransactionHistoryDTO> getTransactionsByStatus(String status) throws TransactionNotFoundException;
+	List<TransactionHistoryDTO> getTransactionsByStatus(String status);
 
-	List<TransactionHistoryDTO> getTransactionsByBranchId(Integer branchId) throws TransactionNotFoundException;
+	List<TransactionHistoryDTO> getTransactionsByBranchId(Integer branchId);
 
 	List<TransactionHistoryDTO> getTransactionHistoryByUserId(Integer userId);
 
-	List<TransactionHistoryDTO> getTransactionsByType(String type) throws TransactionNotFoundException;
+	List<TransactionHistoryDTO> getTransactionsByType(String type);
 }

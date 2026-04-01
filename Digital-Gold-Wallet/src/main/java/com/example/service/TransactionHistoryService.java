@@ -122,9 +122,6 @@ public class TransactionHistoryService implements ITransactionHistoryService {
 	public List<TransactionHistoryDTO> getTransactionsByType(String type) throws TransactionNotFoundException {
 		TransactionType transactionType = TransactionType.fromValue(type);
 		List<TransactionHistory> transactions = transactionHistoryRepository.findByTransactionType(transactionType);
-		if (transactions.isEmpty()) {
-			throw new TransactionNotFoundException("No transaction history found for transaction type: " + type);
-		}
 		return transactions.stream().map(TransactionHistoryMapper::convertEntityToDTO).collect(Collectors.toList());
 	}
 

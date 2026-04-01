@@ -7,8 +7,6 @@ import com.example.dto.TopUserHoldingDTO;
 import com.example.entity.PhysicalGoldTransaction;
 import com.example.entity.User;
 import com.example.entity.VirtualGoldHoldings;
-import com.example.exception.UserNotFoundException;
-
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -35,12 +33,9 @@ public class TopUserService implements ITopUserService {
 
 		List<User> allUsers = userRepository.findAll();
 
-		if (allUsers.isEmpty()) {
-			throw new UserNotFoundException("No users found. ");
-		}
-
 		List<TopUserHoldingDTO> resultList = new ArrayList<>();
 
+		// Step 3: Loop through every user and calculate their gold totals
 		for (User user : allUsers) {
 
 			List<VirtualGoldHoldings> virtualList = virtualGoldHoldingsRepository.findByUser_UserId(user.getUserId());
