@@ -59,4 +59,13 @@ public class TransactionController {
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
+
+    @GetMapping("/type")
+    public ResponseEntity<List<TransactionHistoryDTO>> getTransactionsByType(
+            @RequestParam String type) {
+        List<TransactionHistoryDTO> transactions =
+                transactionHistoryService.getTransactionsByType(type);
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
 }

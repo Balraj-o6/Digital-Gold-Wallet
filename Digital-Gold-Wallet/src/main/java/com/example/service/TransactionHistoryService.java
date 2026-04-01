@@ -4,6 +4,7 @@ import com.example.dao.ITransactionHistoryRepository;
 import com.example.dto.TransactionHistoryDTO;
 import com.example.entity.TransactionHistory;
 import com.example.enums.TransactionStatus;
+import com.example.enums.TransactionType;
 import com.example.exception.UserNotFoundException;
 import com.example.mapper.TransactionHistoryMapper;
 
@@ -104,18 +105,29 @@ public class TransactionHistoryService implements ITransactionHistoryService {
 	@Override
 	public List<TransactionHistoryDTO> getTransactionHistoryByUserId(Integer userId) {
 
-		
+		// Step 1 — check if any transactions exist for this user
 		List<TransactionHistory> transactions = transactionHistoryRepository
 				.findByUser_UserIdOrderByCreatedAtDesc(userId);
 
-		
+		// Step 2 — if list is empty, throw a meaningful error
 		if (transactions.isEmpty()) {
 			throw new UserNotFoundException("No transaction history found for user ID: " + userId);
 		}
 
-		
+		// Step 3 — convert each entity to DTO using stream + mapper
 		return transactions.stream().map(TransactionHistoryMapper::convertEntityToDTO).collect(Collectors.toList());
 
+	}
+
+
+	@Override
+	public List<TransactionHistoryDTO> getTransactionsByType(String type) {
+		TransactionType transactionType = TransactionType.fromValue(type);
+		List<TransactionHistory> transactions =
+				transactionHistoryRepository.findByTransactionType(transactionType);
+		return transactions.stream()
+				.map(TransactionHistoryMapper::convertEntityToDTO)
+				.collect(Collectors.toList());
 	}
 
 }

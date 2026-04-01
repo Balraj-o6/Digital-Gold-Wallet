@@ -29,8 +29,7 @@ public class PhysicalGoldTransactionService implements IPhysicalGoldTransactionS
 
         for (PhysicalGoldTransaction txn : transactions) {
 
-            // Your PhysicalGoldTransactionMapper already exists and does this conversion!
-            // It maps: transactionId, userName, branchName, quantity, deliveryAddress, requestDate
+
             PhysicalGoldTransactionDTO dto =
                     PhysicalGoldTransactionMapper.convertEntityToDTO(txn);
 

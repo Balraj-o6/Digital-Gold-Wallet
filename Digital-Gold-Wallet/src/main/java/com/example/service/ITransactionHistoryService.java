@@ -13,5 +13,7 @@ import java.util.List;
         List<TransactionHistoryDTO> getTransactionsByBranchId(Integer branchId);
         
         List<TransactionHistoryDTO> getTransactionHistoryByUserId(Integer userId);
+
+        List<TransactionHistoryDTO> getTransactionsByType(String type);
     }
 
