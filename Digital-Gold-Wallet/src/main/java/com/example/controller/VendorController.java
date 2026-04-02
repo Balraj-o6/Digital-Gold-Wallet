@@ -27,7 +27,7 @@ public class VendorController {
 		return new ResponseEntity<>(avDto, HttpStatus.OK);
 	}
 
-	@GetMapping("/{quantity}")
+	@GetMapping("/quantity/{quantity}")
 	public ResponseEntity<List<AdminVendorDTO>> getVendorByTotalGoldQuantityMoreThan(@PathVariable BigDecimal quantity){
 		List<AdminVendorDTO> lAdminDTO=service.getVendorByTotalGoldQuantityGreaterThan(quantity);
 		return new ResponseEntity<>(lAdminDTO, HttpStatus.OK);
