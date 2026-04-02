@@ -25,6 +25,10 @@ public class PhysicalGoldTransactionService implements IPhysicalGoldTransactionS
 		List<PhysicalGoldTransaction> transactions = physicalGoldTransactionRepository
 				.findByVendorBranch_BranchId(branchId);
 
+		if (transactions.isEmpty()) {
+			throw new TransactionNotFoundException("No transaction history found for branch Id: " + branchId);
+		}
+
 		List<PhysicalGoldTransactionDTO> resultList = new ArrayList<>();
 
 		for (PhysicalGoldTransaction txn : transactions) {
