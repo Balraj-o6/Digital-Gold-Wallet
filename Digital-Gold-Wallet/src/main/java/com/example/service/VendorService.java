@@ -37,6 +37,7 @@ public class VendorService implements IVendorService {
 		List<Vendor> lVendDTO=repo.getVendorByTotalGoldQuantityGreaterThanEqual(quantity);
 		List<AdminVendorDTO> lAdminVendDTO=new ArrayList<>();
 		lVendDTO.forEach((e)->lAdminVendDTO.add(VendorMapper.convertEntityToAdminDto(e)));
+		if(lAdminVendDTO.isEmpty()) throw new VendorNotFoundException("Vendor Not Found !!!");
 		return lAdminVendDTO;
 	}
 
