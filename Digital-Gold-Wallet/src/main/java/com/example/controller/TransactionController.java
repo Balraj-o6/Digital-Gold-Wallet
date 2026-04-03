@@ -64,10 +64,13 @@ public class TransactionController {
 
 	}
 
-	// The city name comes directly from the URL path
+	// ─── ADD THIS NEW METHOD ↓ ────────────────────────────────────────────────
+	// URL: GET /api/transactions/physical/city/Mumbai
+	// URL: GET /api/transactions/physical/city/Delhi
+	// The {city} part comes directly from the URL
 	@GetMapping("/physical/city/{city}")
 	public ResponseEntity<List<PhysicalGoldTransactionDTO>> getPhysicalTransactionsByCity(
-			@PathVariable String city) {    // reads the city name from the URL
+			@PathVariable String city) {    // @PathVariable reads the city name from URL
 
 		List<PhysicalGoldTransactionDTO> transactions =
 				physicalGoldTransactionService.getPhysicalTransactionsByCity(city);
