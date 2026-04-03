@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Anant
+ */
+
 @Data
 public class PublicVendorDTO {
     private String vendorName;

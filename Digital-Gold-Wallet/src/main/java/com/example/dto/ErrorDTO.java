@@ -6,6 +6,10 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+/**
+ * @author Anant
+ */
+
 @Getter
 @Setter
 public class ErrorDTO {

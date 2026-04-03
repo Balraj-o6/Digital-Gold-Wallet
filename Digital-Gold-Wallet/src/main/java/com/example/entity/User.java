@@ -6,6 +6,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * @author Anant
+ */
+
 @Entity
 @Data
 @Table(name = "users")

@@ -13,11 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Anant
+ */
+
 @Service
 public class VendorService implements IVendorService {
 
 	private IVendorRepository repo;
 
+//	Constructor-injection
 	public VendorService(IVendorRepository repo) {
 		this.repo = repo;
 	}
@@ -25,7 +30,7 @@ public class VendorService implements IVendorService {
 
 	@Override
 	public AdminVendorDTO getVendorByName(String name) throws VendorNotFoundException {
-		Optional<Vendor> op = repo.findByVendorName(name);
+		Optional<Vendor> op = repo.findByVendorName(name); // Fetch vendor by name
 		if (op.isPresent()) {
 			return VendorMapper.convertEntityToAdminDto(op.get());
 		} else
@@ -34,7 +39,7 @@ public class VendorService implements IVendorService {
 
 	@Override
 	public List<AdminVendorDTO> getVendorByTotalGoldQuantityGreaterThan(BigDecimal quantity) {
-		List<Vendor> lVendDTO=repo.getVendorByTotalGoldQuantityGreaterThanEqual(quantity);
+		List<Vendor> lVendDTO=repo.getVendorByTotalGoldQuantityGreaterThanEqual(quantity); // Fetch vendors with quantity >= given value
 		List<AdminVendorDTO> lAdminVendDTO=new ArrayList<>();
 		lVendDTO.forEach((e)->lAdminVendDTO.add(VendorMapper.convertEntityToAdminDto(e)));
 		if(lAdminVendDTO.isEmpty()) throw new VendorNotFoundException("Vendor Not Found !!!");

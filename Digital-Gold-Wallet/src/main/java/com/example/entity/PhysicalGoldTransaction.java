@@ -6,6 +6,11 @@ import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
+/**
+ * @author Anant
+ */
+
 @Entity
 @Data
 @Table(name = "physical_gold_transactions")

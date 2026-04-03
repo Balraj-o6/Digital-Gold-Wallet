@@ -4,6 +4,10 @@ import com.example.dto.AdminVendorDTO;
 import com.example.dto.PublicVendorDTO;
 import com.example.entity.Vendor;
 
+/**
+ * @author Anant
+ */
+
 public class VendorMapper {
 	public static PublicVendorDTO convertEntityToPublicDto(Vendor vendor) {
 		if (vendor == null)

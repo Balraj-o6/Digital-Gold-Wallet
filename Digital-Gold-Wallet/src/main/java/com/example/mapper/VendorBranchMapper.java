@@ -3,6 +3,10 @@ package com.example.mapper;
 import com.example.dto.VendorBranchDTO;
 import com.example.entity.VendorBranch;
 
+/**
+ * @author Anant
+ */
+
 public class VendorBranchMapper {
     public static VendorBranchDTO convertEntityToObject (VendorBranch vBranch){
         if(vBranch==null) return null;

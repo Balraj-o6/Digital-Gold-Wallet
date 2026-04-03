@@ -6,6 +6,10 @@ import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * @author Anant
+ */
+
 @Entity
 @Data
 @Table(name = "vendor_branches")

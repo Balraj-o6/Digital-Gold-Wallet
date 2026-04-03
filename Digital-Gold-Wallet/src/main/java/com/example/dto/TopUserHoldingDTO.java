@@ -3,6 +3,10 @@ package com.example.dto;
 import lombok.Data;
 import java.math.BigDecimal;
 
+/**
+ * @author Anant
+ */
+
 @Data
 public class TopUserHoldingDTO {
 

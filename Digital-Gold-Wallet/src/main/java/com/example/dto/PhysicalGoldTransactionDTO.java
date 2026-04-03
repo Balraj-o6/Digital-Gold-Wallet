@@ -5,6 +5,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * @author Anant
+ */
+
 @Data
 public class PhysicalGoldTransactionDTO {
     private Integer transactionId;

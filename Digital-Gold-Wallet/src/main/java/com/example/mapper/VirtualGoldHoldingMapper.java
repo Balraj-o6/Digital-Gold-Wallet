@@ -3,6 +3,10 @@ package com.example.mapper;
 import com.example.dto.VirtualGoldHoldingDTO;
 import com.example.entity.VirtualGoldHoldings;
 
+/**
+ * @author Anant
+ */
+
 public class VirtualGoldHoldingMapper {
     public static VirtualGoldHoldingDTO convertEntityToObject(VirtualGoldHoldings vgHolds){
         if(vgHolds==null) return null;

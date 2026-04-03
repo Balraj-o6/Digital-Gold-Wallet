@@ -3,6 +3,10 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * @author Anant
+ */
+
 @Entity
 @Data
 @Table(name = "addresses")

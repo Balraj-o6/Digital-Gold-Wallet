@@ -7,6 +7,11 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 import java.math.BigDecimal;
+
+/**
+ * @author Anant
+ */
+
 @Data
 public class UserDTO {
     private Integer userId;

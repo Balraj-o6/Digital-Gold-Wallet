@@ -3,6 +3,10 @@ package com.example.mapper;
 import com.example.dto.TransactionHistoryDTO;
 import com.example.entity.TransactionHistory;
 
+/**
+ * @author Anant
+ */
+
 public class TransactionHistoryMapper {
 
     public static TransactionHistoryDTO convertEntityToDTO(TransactionHistory th) {

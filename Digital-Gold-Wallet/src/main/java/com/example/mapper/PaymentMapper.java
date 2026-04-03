@@ -3,6 +3,10 @@ package com.example.mapper;
 import com.example.dto.PaymentDTO;
 import com.example.entity.Payment;
 
+/**
+ * @author Anant
+ */
+
 public class PaymentMapper {
     public static PaymentDTO convertEntityToObject(Payment payment){
         if(payment==null) return null;

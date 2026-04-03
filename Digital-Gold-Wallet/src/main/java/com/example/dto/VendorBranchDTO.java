@@ -6,6 +6,10 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Anant
+ */
+
 @Data
 public class VendorBranchDTO {
     private Integer branchId;

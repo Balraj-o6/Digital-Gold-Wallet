@@ -4,6 +4,10 @@ package com.example.mapper;
 import com.example.dto.UserDTO;
 import com.example.entity.User;
 
+/**
+ * @author Anant
+ */
+
 public class UserMapper {
     public static UserDTO convertEntityToDTO(User user){
         if(user==null) return null;

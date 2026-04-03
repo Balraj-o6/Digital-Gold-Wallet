@@ -9,6 +9,11 @@ import com.example.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
+/**
+ * @author Anant
+ */
+
 @Entity
 @Data
 @Table(name = "transaction_history")
