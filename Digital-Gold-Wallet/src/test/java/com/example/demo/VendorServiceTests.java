@@ -134,8 +134,10 @@ public class VendorServiceTests {
         @Test
         @DisplayName("Returns empty list when no vendors meet the quantity threshold")
         void shouldReturnEmptyListWhenNoVendorsQualify() {
-            when(repo.getVendorByTotalGoldQuantityGreaterThanEqual(new BigDecimal("9999.00"))).thenReturn(Collections.emptyList());
-            List<AdminVendorDTO> result = vendorService.getVendorByTotalGoldQuantityGreaterThan(new BigDecimal("9999.00"));
+            when(repo.getVendorByTotalGoldQuantityGreaterThanEqual(new BigDecimal("9999.00")))
+                    .thenReturn(Collections.emptyList());
+
+
             assertThatThrownBy(() -> vendorService.getVendorByTotalGoldQuantityGreaterThan(new BigDecimal("9999.00")))
                     .isInstanceOf(VendorNotFoundException.class)
                     .hasMessage("Vendor Not Found !!!");
@@ -153,9 +155,10 @@ public class VendorServiceTests {
         @Test
         @DisplayName("Returns empty list when quantity is very large (no vendor qualifies)")
         void shouldReturnEmptyListForExcessivelyLargeQuantity() {
-            when(repo.getVendorByTotalGoldQuantityGreaterThanEqual(new BigDecimal("999999.00"))).thenReturn(Collections.emptyList());
-            List<AdminVendorDTO> result = vendorService.getVendorByTotalGoldQuantityGreaterThan(new BigDecimal("999999.00"));
-            assertThatThrownBy(() -> vendorService.getVendorByTotalGoldQuantityGreaterThan(new BigDecimal("9999.00")))
+            when(repo.getVendorByTotalGoldQuantityGreaterThanEqual(new BigDecimal("999999.00")))
+                    .thenReturn(Collections.emptyList());
+
+            assertThatThrownBy(() -> vendorService.getVendorByTotalGoldQuantityGreaterThan(new BigDecimal("999999.00")))
                     .isInstanceOf(VendorNotFoundException.class)
                     .hasMessage("Vendor Not Found !!!");
         }
